@@ -201,9 +201,16 @@ stock GetWeaponSkillName(skill, name[], const size = sizeof(name))
 
 stock GetWeaponSkillID(weaponid)
 {
+	if(weaponid == WEAPON_SNIPER) weaponid = 32; //hecky way to do it.
 	new index = weaponid - 22;
 	if (!(0 <= index < sizeof(gWeaponSkills))) {
 		return INVALID_WEAPON_SKILL_ID;
 	}
 	return gWeaponSkills[index];
+}
+
+stock GetSkillWeaponID(skill)
+{
+	if(skill == WEAPONSKILL_SNIPERRIFLE) skill = 12;
+	return skill + 22;
 }
