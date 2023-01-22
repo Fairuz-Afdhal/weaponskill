@@ -126,13 +126,21 @@ stock WS_SetPlayerSkillLevel(playerid, skill, level)
 	GetPlayerSkillLevel
 */
 
-stock GetPlayerSkillLevel(playerid, skill)
+stock WS_GetPlayerSkillLevel(playerid, skill)
 {
 	if (!(0 <= skill < MAX_WEAPON_SKILLS)) {
 		return INVALID_WEAPON_SKILL_ID;
 	}
 	return gPlayerWeaponSkill[playerid][skill];
 }
+
+#if defined _ALS_GetPlayerSkillLevel
+	#undef GetPlayerSkillLevel
+#else
+	#define _ALS_GetPlayerSkillLevel
+#endif
+
+#define GetPlayerSkillLevel WS_GetPlayerSkillLevel
 
 /*
 	GivePlayerSkillLevel
